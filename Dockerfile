@@ -2,7 +2,8 @@ FROM debian:9
 RUN apt-get update && apt-get install -y \
   wget \
   bzip2 \
-  python-pip
+  python-pip \
+  curl
 
 RUN pip install --upgrade pip anchorecli
 
