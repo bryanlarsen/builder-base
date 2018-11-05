@@ -122,7 +122,7 @@ RUN curl -f -L https://github.com/ccojocar/reflex/releases/download/v${REFLEX_VE
   mv reflex /usr/bin/
 
 ENV KUSTOMIZE_VERSION 1.0.10
-RUN curl -L -o /usr/bin/kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/${KUSTOMIZE_VERSION}/kustomize_${KUSTOMIZE_VERSION}_linux_amd64 && chmod a+x /usr/bin/kustomize
+RUN curl -L -o /usr/bin/kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v${KUSTOMIZE_VERSION}/kustomize_${KUSTOMIZE_VERSION}_linux_amd64 && chmod a+x /usr/bin/kustomize
 
 ENV PATH ${PATH}:/opt/google/chrome
 
