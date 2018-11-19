@@ -16,7 +16,7 @@ RUN apt-get install -y libappindicator1 fonts-liberation libasound2 libnspr4 lib
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
     dpkg -i google-chrome*.deb && \
     rm google-chrome*.deb
- 
+
 
 # USER jenkins
 WORKDIR /home/jenkins
@@ -56,7 +56,7 @@ ENV PATH=$PATH:/usr/bin/google-cloud-sdk/bin
 RUN gcloud components install docker-credential-gcr
 
 # jx-release-version
-ENV JX_RELEASE_VERSION 1.0.10
+ENV JX_RELEASE_VERSION 1.0.14
 RUN curl -f -o ./jx-release-version -L https://github.com/jenkins-x/jx-release-version/releases/download/v${JX_RELEASE_VERSION}/jx-release-version-linux && \
   mv jx-release-version /usr/bin/ && \
   chmod +x /usr/bin/jx-release-version
@@ -109,7 +109,7 @@ RUN mkdir acr && \
     curl -f -L https://aadacr.blob.core.windows.net/acr-docker-credential-helper/docker-credential-acr-linux-amd64.tar.gz | tar -xzv -C ./acr/ && \
     mv acr/docker-credential-acr-linux /usr/bin/ && \
     rm -rf acr
-    
+
 # reflex
 ENV REFLEX_VERSION 0.3.1
 RUN curl -f -L https://github.com/ccojocar/reflex/releases/download/v${REFLEX_VERSION}/reflex_${REFLEX_VERSION}_linux_amd64.tar.gz | tar xzv && \
