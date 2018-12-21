@@ -13,9 +13,9 @@ RUN apt-get update && apt-get install -y openjdk-8-jre
 
 # chrome
 RUN apt-get install -y libappindicator1 fonts-liberation libasound2 libnspr4 libnss3 libxss1 lsb-release xdg-utils libappindicator3-1 && \
-    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-    dpkg -i google-chrome*.deb && \
-    rm google-chrome*.deb
+  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+  dpkg -i google-chrome*.deb && \
+  rm google-chrome*.deb
 
 
 # USER jenkins
@@ -68,7 +68,7 @@ RUN curl -f -L https://github.com/fabric8io/exposecontroller/releases/download/v
   mv exposecontroller /usr/bin/
 
 # skaffold
-ENV SKAFFOLD_VERSION 0.17.0
+ENV SKAFFOLD_VERSION 0.19.0
 RUN curl -f -Lo skaffold https://github.com/GoogleCloudPlatform/skaffold/releases/download/v${SKAFFOLD_VERSION}/skaffold-linux-amd64 && \
   chmod +x skaffold && \
   mv skaffold /usr/bin
@@ -99,16 +99,16 @@ RUN curl -f -L https://github.com/jenkins-x/jx/releases/download/v${JX_VERSION}/
 # Currently using https://github.com/estahn/amazon-ecr-credential-helper as there are no releases yet in the main repo
 # Main repo issues tracking at https://github.com/awslabs/amazon-ecr-credential-helper/issues/80
 RUN mkdir ecr && \
-    curl -f -L https://github.com/estahn/amazon-ecr-credential-helper/releases/download/v0.1.1/amazon-ecr-credential-helper_0.1.1_linux_amd64.tar.gz | tar -xzv -C ./ecr/ && \
-    mv ecr/docker-credential-ecr-login /usr/bin/ && \
-    rm -rf ecr
+  curl -f -L https://github.com/estahn/amazon-ecr-credential-helper/releases/download/v0.1.1/amazon-ecr-credential-helper_0.1.1_linux_amd64.tar.gz | tar -xzv -C ./ecr/ && \
+  mv ecr/docker-credential-ecr-login /usr/bin/ && \
+  rm -rf ecr
 
 # ACR docker credential helper
 #??https://github.com/Azure/acr-docker-credential-helper
 RUN mkdir acr && \
-    curl -f -L https://aadacr.blob.core.windows.net/acr-docker-credential-helper/docker-credential-acr-linux-amd64.tar.gz | tar -xzv -C ./acr/ && \
-    mv acr/docker-credential-acr-linux /usr/bin/ && \
-    rm -rf acr
+  curl -f -L https://aadacr.blob.core.windows.net/acr-docker-credential-helper/docker-credential-acr-linux-amd64.tar.gz | tar -xzv -C ./acr/ && \
+  mv acr/docker-credential-acr-linux /usr/bin/ && \
+  rm -rf acr
 
 # reflex
 ENV REFLEX_VERSION 0.3.1
